@@ -1,7 +1,10 @@
 name: Build APK
 on:
   push:
+    branches: [main]
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,7 +19,15 @@ jobs:
           channel: stable
       - run: flutter pub get
       - run: flutter build apk --release
+      - run: cp build/app/outputs/flutter-apk/app-release.apk tkp-collector.apk
       - uses: actions/upload-artifact@v4
         with:
           name: tkp-collector-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: tkp-collector.apk
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: TKP Collector build ${{ github.run_number }}
+          body: "APK dari commit ${{ github.sha }}. Link tetap ke versi terbaru: https://github.com/${{ github.repository }}/releases/latest/download/tkp-collector.apk"
+          files: tkp-collector.apk
+          make_latest: true

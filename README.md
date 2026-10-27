@@ -21,7 +21,8 @@ Aplikasi Android untuk mengambil foto barang bukti + koordinat GPS di TKP lalu m
 ## Cara B — build di GitHub (tanpa instal apa pun)
 1. Setiap push ke repo ini otomatis mem-build APK.
 2. Buka tab **Actions** di https://github.com/aamutakaliman-gif/TKP-app → tunggu "Build APK" hijau (±8 menit).
-3. Klik run tersebut → bagian **Artifacts** → unduh `tkp-collector-apk` (ZIP berisi APK).
+3. Unduh APK terbaru langsung (bisa dari HP, tanpa login):
+   https://github.com/aamutakaliman-gif/TKP-app/releases/latest/download/tkp-collector.apk
 
 ## Menjalankan server di laptop
 1. Pasang Python sekali: `winget install Python.Python.3.12`
